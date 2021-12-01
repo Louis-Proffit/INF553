@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  db:
+    build: 
+      context: ./db
+    container_name: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=test
+      
+  php:
+    build:
+      context: ./dev-utils/
+    restart: always
+    command: "php -S 0.0.0.0:8080 -t /srv"
+    depends_on:
+      - db
+    volumes:
+      - "./dev-utils/php.ini:/etc/php/php.ini"
+      - "./web:/srv"
+    ports:
+      - "8080:8080"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
