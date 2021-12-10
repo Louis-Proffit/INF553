@@ -1,6 +1,7 @@
 <?php
 
 include("config.php");
+include("queries.php");
 
 $dbconn = pg_connect('host='.$host.' port='.$port.' dbname='.$databaseName.' user='.$user.' password='.$password) # Host name is container name, WTF ?
     or die('Could not connect');
@@ -15,9 +16,8 @@ pg_close($dbconn);
 <html>
 
 <head>
-    <title>Full Secondary Column, 1/2 x 1/2 Main Column.</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/table.css">
+    <title>INF553</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>

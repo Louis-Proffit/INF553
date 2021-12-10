@@ -1,5 +1,6 @@
 <?php 
 include("config.php");
+include("queries.php");
 
 if (!isset($_POST["table"])){
     echo "Erreur";
@@ -7,7 +8,7 @@ if (!isset($_POST["table"])){
     return;
 }
 $table = $_POST["table"];
-$dbconn = pg_connect('host=postgres port=5432 dbname=test user=postgres password=postgres') # Host name is container name, WTF ?
+$dbconn = pg_connect('host='.$host.' port='.$port.' dbname='.$databaseName.' user='.$user.' password='.$password) # Host name is container name, WTF ?
     or die('Could not connect');
 
 $ret_4 = pg_query($dbconn, $q4_query_1.$table.$q4_query_2); # Query of point 4
@@ -26,11 +27,7 @@ pg_close($dbconn);
 
 <head>
     <title>Propriétés</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/table.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/js.js"></script>
-    <script src="js/jQuery.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
