@@ -1,7 +1,7 @@
 <?php
 
-$host="129.104.239.171";
+$host="db"; // The host db is used to connect to postgres from the same image
 $port="5432";
 $databaseName="test";
 $user="postgres";
-$password="postgres"; ?>
+$password="example"; ?>
